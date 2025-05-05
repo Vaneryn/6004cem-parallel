@@ -30,14 +30,12 @@ int main() {
     #pragma omp parallel num_threads(numThreads)
     {
         // Lock mutex to ensure mutually exclusive access to the output stream
-        mtx.lock();
+        std::lock_guard<std::mutex> lock(mtx);
 
         // Get thread number
         int tid = omp_get_thread_num();
+        
         // Print hello world with thread number
         std::cout << "Thread " << tid << ": Hello world" << std::endl;
-
-        // Unlock mutex
-        mtx.unlock();
     }
 }
