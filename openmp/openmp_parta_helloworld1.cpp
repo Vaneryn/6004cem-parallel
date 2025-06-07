@@ -16,4 +16,6 @@ int main() {
             std::cout << "Thread " << tid << ": Hello world" << std::endl;
         }
     }
+
+    return 0;
 }
