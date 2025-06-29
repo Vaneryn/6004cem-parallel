@@ -49,7 +49,7 @@ void printTableHeader(const std::vector<std::string>& headers, const std::vector
  * @brief Prints a single row in a formatted table.
  * 
  * @param values A vector of strings representing the values in the row.
- * @param width2A vector of column widths corresponding to each value.
+ * @param widths vector of column widths corresponding to each value.
  */
 void printTableRow(const std::vector<std::string>& values, const std::vector<int>& widths) {
     for (size_t i = 0; i < values.size(); ++i)
@@ -287,19 +287,20 @@ int main() {
     constexpr int kMaxSize = 1000000;
     constexpr int kStartSize = 10;
     constexpr int kSizeMultiplication = 10;
-    constexpr int kTestCount = 100;
+    constexpr int kTestCount = 10;
 
     std::cout << std::endl << kDoubleLine << "\nPERFORMANCE COMPARISON\n" << kDoubleLine << std::endl;
 
     // Display configurations
     std::cout << "Configuration\n" << kSingleLine << std::endl
         << "Number of threads: " << kNumThreads << std::endl
+        << "Test Runs: " << kTestCount << std::endl
         << "Vector1 value: " << kValue1 << std::endl
         << "Vector2 value: " << kValue2 << std::endl
         << "Vector3 value: " << kValue3 << std::endl;
 
     // Balanced Workload per Iteration
-    std::cout << "\n[1] Performance Over Increasing Iterations (Balanced)\n" << kSingleLine << kSingleLine << std::endl;
+    std::cout << "\n[1] Performance Over Increasing Sizes (Balanced)\n" << kSingleLine << kSingleLine << std::endl;
     printTableHeader(kPerformanceHeaders, kPerformanceColWidths, 100);
 
     // Conduct comparison over increasing vector sizes
@@ -325,7 +326,7 @@ int main() {
     }
 
     // Imbalanced Workload per Iteration
-    std::cout << "\n[2] Performance Over Increasing Iterations (Imbalanced)\n" << kSingleLine << kSingleLine << std::endl;
+    std::cout << "\n[2] Performance Over Increasing Sizes (Imbalanced)\n" << kSingleLine << kSingleLine << std::endl;
     printTableHeader(kPerformanceHeaders, kPerformanceColWidths, 100);
 
     // Conduct comparison over increasing vector sizes
